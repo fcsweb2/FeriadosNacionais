@@ -6,14 +6,21 @@ using System.Threading.Tasks;
 
 namespace FeriadosBR
 {
-    class Feriado
+    public class Feriado
     {
-        public string data { get; set; }
+        public Data data { get; set; }
+    }
+
+    public class Data
+    {
+        private int id { get; set; }
         public string nome { get; set; }
-        public string obs { get; set; }
+        public string descricao { get; set; }
+        public object created_at { get; set; }
+        public object updated_at { get; set; }
+        public string data { get; set; }
         public string diaSemana { get; set; }
-        public string diaSemanaDescricao { get; set; }
-        public int id { get; set; }
+        public string diaSemanaW { get; set; }
         public int intervalo { get; set; }
     }
 }

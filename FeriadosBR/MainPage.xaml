@@ -7,22 +7,128 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Dictionary1.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid x:Name="gridMaster">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF068EFF" Offset="0"/>
+                <GradientStop Color="#FF095FA6" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="textBlock" 
-                   Grid.Column="0"
-                   Grid.Row="0"
-                   Grid.ColumnSpan="2"
-                   Text="Feriados" 
-                   VerticalAlignment="Top"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="90*"/>
+        </Grid.RowDefinitions>
+        <StackPanel
+            Grid.Row="0"
+            Padding="10,10,10,0"
+            Margin="0"
+            Background="#FF068EFF"
+            Grid.Column="0">
+            <TextBlock
+                x:Name="txtAppTitle"
+                Foreground="White"
+                Text="FeriadosBR"
+                FontSize="36"
+                FontWeight="Bold" Margin="0"/>
+        </StackPanel>
+        <Grid
+            x:Name="gridDetails"
+            Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100*"/>
+            </Grid.RowDefinitions>
+            <Grid
+                x:Name="gridLeft"
+                Grid.Column="0"
+                Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="40*"/>
+                </Grid.RowDefinitions>
 
-
+                <StackPanel
+                    Grid.Row="0"
+                    Grid.Column="0">
+                    <TextBlock
+                        x:Name="txtTitFaltam"
+                        Margin="0,8,0,0"
+                        Grid.Row="1"
+                        TextWrapping="Wrap"
+                        Text="Faltam"
+                        VerticalAlignment="Top"
+                        TextAlignment="Center"
+                        Foreground="White"/>
+                    <TextBlock
+                        x:Name="txtDias"
+                        TextWrapping="Wrap"
+                        Text="28"
+                        Foreground="White"
+                        FontSize="150"
+                        FontWeight="Bold"
+                        TextAlignment="Center"
+                        FontStretch="Condensed"
+                        RenderTransformOrigin="0.5,0.5">
+                        <TextBlock.RenderTransform>
+                            <CompositeTransform/>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <TextBlock
+                        x:Name="txtTitDias"
+                        HorizontalAlignment="Center"
+                        TextWrapping="Wrap"
+                        Text="dias"
+                        Foreground="White"
+                        Margin="150,-30,0,0"
+                        VerticalAlignment="Bottom" />
+                </StackPanel>
+                <StackPanel
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Background="#FF068EFF">
+                    <TextBlock
+                        x:Name="txtNomeFeriado"
+                        Text="Natal"
+                        TextAlignment="Center"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        VerticalAlignment="Center"
+                        Margin="0,5,0,0"/>
+                </StackPanel>
+                <StackPanel
+                    Grid.Row="2"
+                    Grid.Column="0">
+                </StackPanel>
+            </Grid>
+            <Grid
+                x:Name="gridRight"
+                Grid.Column="1"
+                Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100*"/>
+                </Grid.RowDefinitions>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>
