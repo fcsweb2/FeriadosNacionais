@@ -27,7 +27,7 @@ namespace FeriadosBR
             this.InitializeComponent();
 
             FeriadoFactory feriado = new FeriadoFactory();
-            feriado.GetRequest();
+            feriado.GetProxFeriado();
         }
     }
 }

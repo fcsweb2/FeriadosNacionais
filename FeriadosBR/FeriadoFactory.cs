@@ -10,7 +10,7 @@ namespace FeriadosBR
 {
     class FeriadoFactory
     {
-        public Feriado async void GetProxFeriado()
+        public async Task<Feriado> GetProxFeriado()
         {
             String erro;
             Uri geturi = new Uri("http://feriado.hcfsolutions.com.br/app/feriados");
@@ -30,17 +30,17 @@ namespace FeriadosBR
 			return feriado;
         }
 
-        public List<Feriado> async void GetFeriadosAno(int ano)
+        public async Task<List<Feriado>> GetFeriadosAno(int ano)
         {
             String erro;
             Uri geturi = new Uri("http://feriado.hcfsolutions.com.br/app/feriados/" + ano);
             HttpClient client = new HttpClient();
             HttpResponseMessage responseGet = await client.GetAsync(geturi);
-			List<Feriado> listFeriadosDoAno = new List<Feriado>
+            List<Feriado> listFeriadosDoAno = new List<Feriado>();
             if (responseGet.IsSuccessStatusCode)
             {
                 string response = await responseGet.Content.ReadAsStringAsync();
-				List<Feriado> listFeriadosDoAno = JsonConvert.DeserializeObject<List<Feriado>>(response);
+				listFeriadosDoAno = JsonConvert.DeserializeObject<List<Feriado>>(response);
             }
             else
             {
@@ -50,7 +50,7 @@ namespace FeriadosBR
 			return listFeriadosDoAno;
         }
 
-        public Feriado async void GetFeriadosAnoById(int ano, int id)
+        public async Task<Feriado> GetFeriadosAnoById(int ano, int id)
         {
             String erro;
             Uri geturi = new Uri("http://feriado.hcfsolutions.com.br/app/feriados/" + ano + "/" + id);
@@ -66,9 +66,9 @@ namespace FeriadosBR
             {
                 erro = responseGet.StatusCode.ToString() + " - " + responseGet.ReasonPhrase;
             }
-        }
 
-		return feriado;
+            return feriado;
+        }
 
     }
 }
