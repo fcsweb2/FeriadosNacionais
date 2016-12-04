@@ -1,5 +1,4 @@
-﻿using FeriadosBR.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace FeriadosBR.Model
 {
-    public class Feriado
+    public class ColecaoFeriado
     {
-        public Data data { get; set; }
+        public List<Data> data { get; set; }
     }
 }
+

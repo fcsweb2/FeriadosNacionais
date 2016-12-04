@@ -15,9 +15,27 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid x:Name="gridMaster">
+    <Grid         
+        x:Name="gridMaster" 
+        ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+        ScrollViewer.VerticalScrollBarVisibility="Auto">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth ="650"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="gridLeft.ColumnSpan" Value="1" />
+                        <Setter Target="gridRight.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <LinearGradientBrush 
+                EndPoint="0.5,1" 
+                StartPoint="0.5,0">
                 <GradientStop Color="#FF068EFF" Offset="0"/>
                 <GradientStop Color="#FF095FA6" Offset="1"/>
             </LinearGradientBrush>
@@ -26,108 +44,198 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="90*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <StackPanel
-            Grid.Row="0"
+        <StackPanel 
+            Grid.Row="0" 
             Padding="10,10,10,0"
             Margin="0"
             Background="#FF068EFF"
             Grid.Column="0">
-            <TextBlock
-                x:Name="txtAppTitle"
-                Foreground="White"
-                Text="FeriadosBR"
-                FontSize="36"
-                FontWeight="Bold" Margin="0"/>
+            <TextBlock 
+                x:Name="txtAppTitle"                 
+                Foreground="White"                
+                Text="FeriadosBR"                 
+                FontSize="36"                
+                FontWeight="Bold"                                 
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch"/>
         </StackPanel>
-        <Grid
-            x:Name="gridDetails"
-            Grid.Row="1">
+        <Grid 
+            x:Name="gridDetails"             
+            Grid.Column="0"
+            Grid.Row="1" 
+            ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+            ScrollViewer.VerticalScrollBarVisibility="Auto">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="100*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Grid
-                x:Name="gridLeft"
+            <Grid 
+                x:Name="gridLeft"             
                 Grid.Column="0"
-                Grid.Row="0">
+                Grid.Row="0" 
+                Grid.ColumnSpan="2" 
+                ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="40*"/>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="40*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-
-                <StackPanel
-                    Grid.Row="0"
+                <StackPanel 
+                    Grid.Row="0"                                         
                     Grid.Column="0">
-                    <TextBlock
-                        x:Name="txtTitFaltam"
-                        Margin="0,8,0,0"
-                        Grid.Row="1"
+                    <TextBlock 
+                        x:Name="txtTitFaltam"                         
+                        Grid.Row="1" 
                         TextWrapping="Wrap"
-                        Text="Faltam"
-                        VerticalAlignment="Top"
-                        TextAlignment="Center"
+                        Text="Faltam" 
+                        VerticalAlignment="Top" 
+                        TextAlignment="Center" 
                         Foreground="White"/>
-                    <TextBlock
-                        x:Name="txtDias"
-                        TextWrapping="Wrap"
-                        Text="28"
-                        Foreground="White"
-                        FontSize="150"
-                        FontWeight="Bold"
-                        TextAlignment="Center"
-                        FontStretch="Condensed"
+                    <TextBlock 
+                        x:Name="txtDias"                         
+                        TextWrapping="Wrap" 
+                        Text="28" 
+                        Foreground="White" 
+                        FontSize="150" 
+                        FontWeight="Bold" 
+                        TextAlignment="Center" 
+                        FontStretch="Condensed" 
                         RenderTransformOrigin="0.5,0.5">
                         <TextBlock.RenderTransform>
                             <CompositeTransform/>
                         </TextBlock.RenderTransform>
                     </TextBlock>
-                    <TextBlock
+                    <TextBlock 
                         x:Name="txtTitDias"
-                        HorizontalAlignment="Center"
-                        TextWrapping="Wrap"
-                        Text="dias"
-                        Foreground="White"
-                        Margin="150,-30,0,0"
+                        HorizontalAlignment="Center"                         
+                        TextWrapping="Wrap" 
+                        Text="dias" 
+                        Foreground="White" 
+                        Margin="150,-30,0,0" 
                         VerticalAlignment="Bottom" />
                 </StackPanel>
-                <StackPanel
-                    Grid.Row="1"
-                    Grid.Column="0"
+                <StackPanel                     
+                    Grid.Row="1"                                         
+                    Grid.Column="0" 
                     Background="#FF068EFF">
-                    <TextBlock
-                        x:Name="txtNomeFeriado"
-                        Text="Natal"
-                        TextAlignment="Center"
+                    <TextBlock                                               
+                        x:Name="txtNomeFeriado"            
+                        Text="Natal"                                     
+                        TextAlignment="Center" 
                         Foreground="White"
-                        FontWeight="Bold"
-                        VerticalAlignment="Center"
-                        Margin="0,5,0,0"/>
+                        FontWeight="Bold" 
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Center" />
                 </StackPanel>
-                <StackPanel
-                    Grid.Row="2"
+                <StackPanel 
+                    Grid.Row="2"                                         
                     Grid.Column="0">
+                    <Grid 
+                        Height="Auto"
+                        x:Name="gridFeriadoDetalhe" 
+                        ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                        ScrollViewer.VerticalScrollBarVisibility="Auto">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40*"/>
+                            <ColumnDefinition Width="60*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock 
+                            x:Name="txtDataFeriado"
+                            Grid.Column="0"                                                
+                            Grid.Row="0"
+                            TextWrapping="Wrap" 
+                            Text="25" 
+                            Foreground="White" 
+                            FontSize="100" 
+                            FontWeight="Bold" 
+                            TextAlignment="Center" 
+                            VerticalAlignment="Top"/>
+                        <TextBlock
+                            Grid.Column="0"                                                
+                            Grid.Row="0"
+                            x:Name="txtNomeMesFeriado"            
+                            Text="Dezembro"                                     
+                            TextAlignment="Center" 
+                            Foreground="White"
+                            FontWeight="Bold" 
+                            VerticalAlignment="Top" 
+                            Margin="0,120,0,0"/>
+                        <TextBlock
+                            Grid.Column="1"                                                
+                            Grid.Row="0"
+                            x:Name="txtDiaSemanaFeriado"            
+                            Text="Domingo"                                     
+                            TextAlignment="Left" 
+                            Foreground="White"
+                            FontWeight="Bold" 
+                            VerticalAlignment="Top" 
+                            Margin="0,5,0,0"/>
+                        <TextBlock
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            x:Name="txtDescricaoFeriado"            
+                            Text="Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum... !"                                     
+                            TextAlignment="Left" 
+                            Foreground="White" 
+                            Padding="0,30,20,0" 
+                            TextWrapping="Wrap" 
+                            LineStackingStrategy="BlockLineHeight" 
+                            Margin="0" 
+                            ScrollViewer.HorizontalScrollBarVisibility="Visible" 
+                            TextTrimming="Clip" />
+                    </Grid>
                 </StackPanel>
             </Grid>
-            <Grid
-                x:Name="gridRight"
+            <Grid                 
+                x:Name="gridRight"             
                 Grid.Column="1"
-                Grid.Row="0">
+                Grid.Row="0" 
+                ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                Visibility="Collapsed" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="100*"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
+                <ListView 
+                    x:Name="listFeriados" 
+                    Height="Auto" 
+                    Margin="10" 
+                    Grid.Row="1" 
+                    Width="Auto" Background="#FF068EFF" Opacity="0.9" BorderThickness="10">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock 
+                                            Foreground="White"
+                                            Text="{Binding data}" 
+                                            Margin="0,0,10,0"/>
+                                        <TextBlock 
+                                            Foreground="White" 
+                                            Text="{Binding nome}"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </Grid>
         </Grid>
     </Grid>

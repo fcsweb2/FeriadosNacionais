@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using FeriadosBR.Model;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,57 +12,53 @@ namespace FeriadosBR
 {
     class FeriadoFactory
     {
-        public async Task<Feriado> GetProxFeriado()
+        public Feriado GetProxFeriado()
         {
-            String erro;
-            Uri geturi = new Uri("http://feriado.hcfsolutions.com.br/app/feriados");
-            HttpClient client = new HttpClient();
-            HttpResponseMessage responseGet = await client.GetAsync(geturi);
-			Feriado feriado = new Feriado();
-            if (responseGet.IsSuccessStatusCode)
-            {
-                string response = await responseGet.Content.ReadAsStringAsync();
-                feriado = JsonConvert.DeserializeObject<Feriado>(response);
-            }
-            else
-            {
-                erro = responseGet.StatusCode.ToString() + " - " + responseGet.ReasonPhrase;
-            }
+            Feriado feriado = null;
+            var client = new HttpClient();
+            var task = client.GetAsync("http://feriado.hcfsolutions.com.br/app/feriados")
+              .ContinueWith((taskwithresponse) =>
+              {
+                  var response = taskwithresponse.Result;
+                  var jsonString = response.Content.ReadAsStringAsync();
+                  jsonString.Wait();
+                  feriado = JsonConvert.DeserializeObject<Feriado>(jsonString.Result);
 
-			return feriado;
+              });
+            task.Wait();
+
+            return feriado;
         }
 
-        public async Task<List<Feriado>> GetFeriadosAno(int ano)
+        public ColecaoFeriado GetFeriadosAno(int ano)
         {
-            String erro;
-            Uri geturi = new Uri("http://feriado.hcfsolutions.com.br/app/feriados/" + ano);
-            HttpClient client = new HttpClient();
-            HttpResponseMessage responseGet = await client.GetAsync(geturi);
-            List<Feriado> listFeriadosDoAno = new List<Feriado>();
-            if (responseGet.IsSuccessStatusCode)
-            {
-                string response = await responseGet.Content.ReadAsStringAsync();
-				listFeriadosDoAno = JsonConvert.DeserializeObject<List<Feriado>>(response);
-            }
-            else
-            {
-                erro = responseGet.StatusCode.ToString() + " - " + responseGet.ReasonPhrase;
-            }
+            ColecaoFeriado listaFeriadosDoAno = null;
+            var client = new HttpClient();
+            var task = client.GetAsync("http://feriado.hcfsolutions.com.br/app/feriados/" + ano)
+              .ContinueWith((taskwithresponse) =>
+              {
+                  var response = taskwithresponse.Result;
+                  var jsonString = response.Content.ReadAsStringAsync();
+                  jsonString.Wait();
+                  listaFeriadosDoAno = JsonConvert.DeserializeObject<ColecaoFeriado>(jsonString.Result);
+                  
+              });
+            task.Wait();
 
-			return listFeriadosDoAno;
+            return listaFeriadosDoAno;
         }
 
-        public async Task<Feriado> GetFeriadosAnoById(int ano, int id)
+        public async Task<ColecaoFeriado> GetFeriadosAnoById(int ano, int id)
         {
             String erro;
             Uri geturi = new Uri("http://feriado.hcfsolutions.com.br/app/feriados/" + ano + "/" + id);
             HttpClient client = new HttpClient();
             HttpResponseMessage responseGet = await client.GetAsync(geturi);
-			Feriado feriado = new Feriado();
+            ColecaoFeriado feriado = new ColecaoFeriado();
             if (responseGet.IsSuccessStatusCode)
             {
                 string response = await responseGet.Content.ReadAsStringAsync();
-                feriado = JsonConvert.DeserializeObject<Feriado>(response);
+                feriado = JsonConvert.DeserializeObject<ColecaoFeriado>(response);
             }
             else
             {

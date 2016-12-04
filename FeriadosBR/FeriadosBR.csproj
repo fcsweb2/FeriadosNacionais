@@ -95,6 +95,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\ColecaoFeriado.cs" />
+    <Compile Include="Model\Data.cs" />
     <Compile Include="Model\Feriado.cs" />
     <Compile Include="FeriadoFactory.cs" />
     <Compile Include="MainPage.xaml.cs">
