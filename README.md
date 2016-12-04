@@ -27,4 +27,4 @@ O aplicativo permite visualizar todos os feriados do ano vigente do Brasil de fo
 
 ## Diagrama de classe
 
-![Diagrama de classe](/DOCUMENTACAO/diagramaClass.png "Astah")
+![Diagrama de classe](/docs/diagramaClass.png "Astah")
